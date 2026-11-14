@@ -1,0 +1,22 @@
+name: release-please
+on:
+  push:
+    branches: [main]
+permissions:
+  contents: write
+  pull-requests: write
+  issues: write
+jobs:
+  release-please:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Tag merged release PRs (github-release)
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: >-
+          npx --yes release-please@17.11.2 github-release --token="$GITHUB_TOKEN" --repo-url="$GITHUB_REPOSITORY" --target-branch=main --release-type=go-yoshi --changelog-path=CHANGES.md
+      - name: Open or update the release PR (release-pr)
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: >-
+          npx --yes release-please@17.11.2 release-pr --token="$GITHUB_TOKEN" --repo-url="$GITHUB_REPOSITORY" --target-branch=main --release-type=go-yoshi --changelog-path=CHANGES.md
