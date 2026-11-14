@@ -14,7 +14,7 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: >-
-          npx --yes release-please@17.11.2 github-release --token="$GITHUB_TOKEN" --repo-url="$GITHUB_REPOSITORY" --target-branch=main --release-type=go-yoshi --changelog-path=CHANGES.md
+          npx --yes release-please@17.11.2 github-release --token="$GITHUB_TOKEN" --repo-url="$GITHUB_REPOSITORY" --target-branch=main --release-type=go-yoshi
       - name: Open or update the release PR (release-pr)
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
