@@ -1,3 +1,3 @@
 # api
 
-Teh api module.
+The api module.
